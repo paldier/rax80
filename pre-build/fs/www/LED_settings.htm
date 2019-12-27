@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<%11%>
+
+<title>NETGEAR Router <%12%></title>
+<link rel="stylesheet" href="<%13%>">
+<link rel="stylesheet" href="css/scrollbar.css">
+<link rel="stylesheet" href="css/button.css">
+
+<script src="jquery.js"></script>
+<script src="script/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="script/jquery.jscrollpane.min.js"></script>
+
+<script src="script/script.js"></script>
+<link rel="stylesheet" href="form.css">
+<STYLE TYPE="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style>
+<%14%>
+<script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+    $(document).ready(function()
+    {	
+        $("#target").submit(function() {
+            buttonFilter();
+        });
+
+    });
+function loadSettings()
+{
+	var cf = document.forms[0];
+	if (cf.led_now.value == "en_blink")
+	{
+		cf.led_settings[0].checked = true;
+	}
+	if (cf.led_now.value == "dis_blink")
+	{
+		cf.led_settings[1].checked = true;
+	}
+	if (cf.led_now.value == "turn_off")
+	{
+		cf.led_settings[2].checked = true;
+	}
+}
+
+function resize() {
+        if(get_browser()=="Chrome")
+            $(".scroll-pane").css("margin-top","-25px");
+    }
+
+//-->
+</script>
+<link href="css/custom.css" rel="stylesheet" type="text/css">
+</head>
+<body  onload="change_size();loadSettings();resize()" class="page-body" onResize="change_size();resize();" >
+    <img class="cover-image" src="<%68%>">
+    <!--<img class="body-image" src="<%69%>">-->
+    <div id="full-page-container">
+        <form id="target"  name="formname" method="POST" action="led_settings.cgi">
+            <input type="hidden" name="buttonHit"><input type="hidden" name="buttonValue">
+            <img class="subtop-image" src="<%70%>">
+            <div class="subhead2"><%502%></div>
+            <table border="0"    style="height:370px"  class="subhead2-table">
+                <tr align="left" valign="middle">
+                    <td   colspan="2" class="table-seperate-border">
+                    <div class="fix_button">
+         		<button value="<%74%>" onclick="buttonClick(this,'<%74%>');reset();loadSettings();" type="submit" name="Cancel" class="button-cancel cancel_bt" ><%74%></button>
+			<button value="<%72%>"  onclick="buttonClick(this,'<%72%>');" type="submit" name="Apply" class="button-apply apply_bt"><%72%></button>
+                       </div>
+                       </td>
+                </tr>
+                <tr><td class="scrollpane-table-seperate-border scroll_container pt-31" colspan="2"><div class="scroll-pane" style="height:365px;width:620px;overflow:auto;scrolling:auto"><table style="border-collapse:collapse;width:97%">
+                
+                    <tr>
+                        <td colspan="2">
+                         	<label class="checkbox-container">
+		 <input type="radio"  name="led_settings" value="en_blink"><%2763%>
+		  <span class="radio-checkmark"></span>
+		</label>
+                        
+                       </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="pt-15">
+                         	<label class="checkbox-container">
+		<input type="radio"  name="led_settings" value="dis_blink"><%2764%>
+		  <span class="radio-checkmark"></span>
+		</label>
+                        
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="pt-15">
+                         	<label class="checkbox-container">
+		 <input type="radio"  name="led_settings" value="turn_off"><%2765%>
+		  <span class="radio-checkmark"></span>
+		</label>
+                        
+                       </td>
+                    </tr>
+                </table></div></td></tr>
+            </table>
+        <INPUT name=led_now type=hidden value="<%2766%>" >
+        </form>
+    </div>
+</body>
+</html>
+

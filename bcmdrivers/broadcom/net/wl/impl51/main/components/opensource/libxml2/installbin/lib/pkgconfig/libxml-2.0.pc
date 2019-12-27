@@ -1,0 +1,13 @@
+prefix=/projects/wlan_sw_ae3/blakekuan/bcm963xx_502HND05rc05_KUDU_REL_17_10_25_11_hnd_full_src_gpl/bcm963xx/bcmdrivers/broadcom/net/wl/impl51/main/components/opensource/libxml2/installbin
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+modules=1
+
+Name: libXML
+Version: 2.9.0
+Description: libXML library version2.
+Requires:
+Libs: -L${libdir} -lxml2
+Libs.private:     -lm  
+Cflags: -I${includedir}/libxml2 

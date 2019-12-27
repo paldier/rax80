@@ -1,0 +1,73 @@
+ubifs-utils/mkfs.ubifs/mkfs_ubifs-crc16.o: ubifs-utils/mkfs.ubifs/crc16.c \
+ ubifs-utils/mkfs.ubifs/crc16.h /usr/include/stdlib.h \
+ /usr/include/features.h /usr/include/sys/cdefs.h \
+ /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
+ /usr/include/gnu/stubs-64.h \
+ /tools/oss/packages/x86_64-rhel6/gcc/4.5.4/lib/gcc/x86_64-unknown-linux-gnu/4.5.4/include/stddef.h \
+ /usr/include/bits/waitflags.h /usr/include/bits/waitstatus.h \
+ /usr/include/endian.h /usr/include/bits/endian.h \
+ /usr/include/bits/byteswap.h /usr/include/xlocale.h \
+ /usr/include/sys/types.h /usr/include/bits/types.h \
+ /usr/include/bits/typesizes.h /usr/include/time.h \
+ /usr/include/sys/select.h /usr/include/bits/select.h \
+ /usr/include/bits/sigset.h /usr/include/bits/time.h \
+ /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h \
+ /usr/include/alloca.h \
+ /tools/oss/packages/x86_64-rhel6/gcc/4.5.4/lib/gcc/x86_64-unknown-linux-gnu/4.5.4/include/stdint.h \
+ /usr/include/stdint.h /usr/include/bits/wchar.h
+
+ubifs-utils/mkfs.ubifs/crc16.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-64.h:
+
+/tools/oss/packages/x86_64-rhel6/gcc/4.5.4/lib/gcc/x86_64-unknown-linux-gnu/4.5.4/include/stddef.h:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/waitstatus.h:
+
+/usr/include/endian.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/bits/byteswap.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/bits/types.h:
+
+/usr/include/bits/typesizes.h:
+
+/usr/include/time.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/bits/sigset.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/sys/sysmacros.h:
+
+/usr/include/bits/pthreadtypes.h:
+
+/usr/include/alloca.h:
+
+/tools/oss/packages/x86_64-rhel6/gcc/4.5.4/lib/gcc/x86_64-unknown-linux-gnu/4.5.4/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/bits/wchar.h:

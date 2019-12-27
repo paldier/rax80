@@ -1,0 +1,901 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+
+<%11%>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<!--
+<meta http-equiv="refresh" content="3">
+-->
+<title>NETGEAR Router WNDR3400</title>
+<link rel="stylesheet" href="<%13%>">
+<link rel="stylesheet" href="css/scrollbar.css">
+<link rel="stylesheet" href="css/button.css">
+
+<script src="jquery.js"></script>
+
+<script src="script/jquery.mousewheel.js"></script>
+<script src="script/jquery.jscrollpane.min.js"></script>
+
+<script src="script/script.js"></script>
+<link rel="stylesheet" href="form.css">
+<STYLE TYPE="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style>
+
+<script language="javascript" type="text/javascript" src="func.js"></script>
+<script language="javascript" type="text/javascript" src="msg.js"></script>
+<script language="javascript" type="text/javascript" src="utility.js"></script>
+<script language="javascript" type="text/javascript" src="browser.js"></script>
+
+<script language="javascript" type="text/javascript" src="md5.js"></script>
+<script language="javascript" type="text/javascript" src="wep.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+var DisableFixedDNS = false;
+var DisableFixedMAC = false;
+var MacAddress;
+var DodDisable = false;
+var DodIndex = 1;
+
+    $(document).ready(function()
+    {	
+        var form=document.forms[1];
+        var gui_region = form.curlang.value;
+    
+        $('.scroll-pane').jScrollPane('scrollbarMargin:5px');
+ 
+        $('#INT_setup').click(function(ev){ 
+            parent.loadPage2("BAS_basic.htm");
+        }); 
+
+        $('#wireless_setup').click(function(ev){ 
+            parent.loadPage2("WLG_home.htm");
+        }); 
+        
+        $('#wireless_setup_5G').click(function(ev){ 
+            parent.loadPage2("WLG_home.htm");
+        });         
+        
+        $('#guest_setup').click(function(ev){ 
+            parent.loadPage2("WLG_wireless_dual_band_2.htm");
+        });         
+  
+        $('#guest_setup_5G').click(function(ev){ 
+            parent.loadPage2("WLG_wireless_dual_band_2.htm");
+        });   
+  
+        $('#LAN_setup').click(function(ev){ 
+            parent.loadPage2("WLG_ap_dual_band.htm");
+        });          
+        
+        $('.basic-text-menu').each(function(){
+             if(gui_region=="Chinese"){
+                 $(this).addClass("basic-text-menu-pr"); 
+             }else{
+                 $(this).removeClass("basic-text-menu-pr"); 
+             }
+        });
+        $('.basic-text-subTitle').each(function(){
+             if(gui_region=="Chinese"){
+                 $(this).addClass("basic-text-subTitle-pr"); 
+             }else{
+                 $(this).removeClass("basic-text-subTitle-pr"); 
+             }
+        });
+        $('.basic-text-content').each(function(){
+             if(gui_region=="Chinese"){
+                 $(this).addClass("basic-text-content-pr"); 
+             }else{
+                 $(this).removeClass("basic-text-content-pr"); 
+             }
+        });
+        $('.box-header-text').each(function(){
+             if(gui_region=="Chinese"){
+                 $(this).addClass("box-header-text-pr"); 
+             }else{
+                 $(this).removeClass("box-header-text-pr"); 
+             }
+        });       
+        /* checking long string */
+        if($('.header-text1').text().length>=36 | $('.header-text2').text().length>=36){
+               $('#box-header-table1').addClass("box-header-table-large");
+               $('#box-header-table2').addClass("box-header-table-large");
+               $('#box-header-table1').removeClass("box-header-table");
+               $('#box-header-table2').removeClass("box-header-table");                    
+        }
+
+        if($('.header-text3').text().length>=36 | $('.header-text4').text().length>=36){
+               $('#box-header-table3').addClass("box-header-table-large");
+               $('#box-header-table4').addClass("box-header-table-large");
+               $('#box-header-table3').removeClass("box-header-table");
+               $('#box-header-table4').removeClass("box-header-table");  
+        }    
+        if($('.header-text5').text().length>=36 | $('.header-text6').text().length>=36){
+               $('#box-header-table5').addClass("box-header-table-large");
+               $('#box-header-table6').addClass("box-header-table-large");
+               $('#box-header-table5').removeClass("box-header-table");
+               $('#box-header-table6').removeClass("box-header-table");  
+        }   		
+		
+		       
+    });
+
+    function setHelpIframeVisible(){
+        $('.bas-help-frame-div').css("visibility","visible");
+    }
+
+
+    function showHelpIframe() {
+
+
+        var imgSrc=document.getElementById('help-button');
+
+        if(imgSrc.src.search("down")>=0)
+        {
+            $(".bas-help-frame-div").show();
+            imgSrc.src="img/helparrowup-icon.png";
+        }
+        else
+        {
+            $(".bas-help-frame-div").hide();
+            imgSrc.src="img/helparrowdown-icon.png";
+            setTimeout(setHelpIframeVisible,500);
+        }
+    }
+   
+    function loadhelp(fname,anchname)
+    {
+        if ((loadhelp.arguments.length == 1 ) || (anchname == "" ))
+            $('#page').attr("src",fname+"_h.htm");
+        else
+            $('#page').attr("src",fname+"_h.htm#"  + anchname);
+    }   
+    
+   
+
+function adjustPageLayout()
+{
+    adjustButtonSize();
+        var table_height1 = $('#page-table1')[0].clientHeight+"px";
+        var table_height2 = $('#page-table2')[0].clientHeight+"px";
+        var table_height3 = $('#page-table3')[0].clientHeight+"px";
+        var table_height4 = $('#page-table4')[0].clientHeight+"px";
+        var table_height5 = $('#page-table5')[0].clientHeight+"px";
+        var table_height6 = $('#page-table6')[0].clientHeight+"px";		
+    
+        /*if($('#page-table1')[0].clientHeight >=  $('#page-table2')[0].clientHeight)
+            $('#page-table2').css("height",table_height1);
+        else
+            $('#page-table1').css("height",table_height2);
+            
+        if($('#page-table3')[0].clientHeight >=  $('#page-table4')[0].clientHeight)
+            $('#page-table4').css("height",table_height3);
+        else
+            $('#page-table3').css("height",table_height4);    
+        if($('#page-table5')[0].clientHeight >=  $('#page-table6')[0].clientHeight)
+            $('#page-table6').css("height",table_height5);
+        else
+            $('#page-table5').css("height",table_height6);*/
+}
+
+function adjustButtonSize()
+{
+    if($($('#reboot')[0].parentNode)[0].scrollHeight > 25 ||
+        $($('#statistics')[0].parentNode)[0].scrollHeight > 25 ||
+        $($('#status')[0].parentNode)[0].scrollHeight > 25) 
+    {
+        //$($('#reboot')[0].parentNode).addClass('page-table-button-large-left');
+        //$($('#reboot')[0].parentNode).removeClass('page-table-button-left');
+        //$($('#statistics')[0].parentNode).addClass('page-table-button-large-right');
+        //$($('#statistics')[0].parentNode).removeClass('page-table-button-right');
+        //$($('#status')[0].parentNode).addClass('page-table-button-large-right');
+        //$($('#status')[0].parentNode).removeClass('page-table-button-right');
+    }
+}
+
+function advButtonClick(index){
+
+    if(index==0) // Show Statistics
+        openStatisticsWindow();
+    else if(index==1)
+    {    
+          openStatusWindow();
+	// document.forms[0].buttonSelect.value="1";
+    }
+    else if(index==2)
+    {
+        if(confirm("<%3886%>"))
+        {
+            document.forms[0].buttonSelect.value="2";
+            document.forms[0].submit(document.forms[0]);
+        }
+    }
+}
+
+function openStatWindow() {
+	window.open(this.form.stat_page.value, '','height=350,status=yes');
+	return ture;
+}
+
+
+function openStatusWindow()
+{
+    var conn = document.forms[0].wantype.value;
+    var winoptions;
+    if (conn == "dhcp")
+    //if (conn == "dhcp" || conn == "pppoe")
+            winoptions = "width=400,height=460,status=yes,resizable=yes";
+<%376%>    
+    else if (conn == "pppoe" || conn == "pppoa")
+<%378%>
+<%547%>
+    else if (conn == "pppoe")
+<%548%>        
+    {
+		<%632%>
+        if ("<%3887%><%3888%>" == "1")
+                winoptions = "width=400,height=600,status=yes,resizable=yes";
+        else
+		<%633%>
+                    winoptions = "width=500,height=360,status=yes,resizable=yes";
+    }
+    else
+            winoptions = "width=400,height=260,status=yes,resizable=yes";
+    openDataSubWin('RST_wanstat.htm',winoptions);
+}
+
+function openStatisticsWindow()
+{
+    var conn = document.forms[0].wantype.value;
+    var form=document.forms[1];
+    var gui_region = form.curlang.value;
+    var winoptions;
+    if(gui_region=="German"){
+       winoptions = "width=1024,height=360,status=yes,resizable=yes";
+       openDataSubWin('RST_statistics.htm',winoptions);
+    }else{
+       winoptions = "width=780,height=360,status=yes,resizable=yes";
+       openDataSubWin('RST_statistics.htm',winoptions);
+    }
+}
+
+function loadSettings()
+{
+    var cf=document.forms[0];
+    
+    adjustPageLayout();
+ 	parent.$('#page2').css("visibility","visible");
+    parent.$('#page_contain2').removeClass('main-page-contain-loading'); 
+/* 
+	if (cf.enable_apmode.value == 1)
+    {
+
+        var statusButton;
+        cf.Status.disabled = 'true';
+        statusButton=document.getElementsByName("Status");
+        //statusButton.outerHTML='<button type="submit" disabled value="<%2509%>" name="Remove" class="button-grey" onClick="buttonClick(this,\'<%2509%>\');return remove_disk();"><span class="roundleft_grey">&nbsp;&nbsp; <%2509%></span><span class="roundright_grey">&nbsp;&nbsp;&nbsp;&nbsp;</span></button>';
+        statusButton.outerHTML='<button type="button" disabled class="button-grey" style="float:left" onClick="advButtonClick(1);" onMouseOver="changeCursorPointer();" onMouseOut="changeCursorDefault();" name="Status"><%934%></button>';
+        //removeButton[0].style.cursor='default';
+    }
+*/
+}
+
+//-->
+</script>
+<link href="css/custom.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body onload="change_size_ADVPage();loadSettings();" bgcolor="#FFFFFF" class="body_custom_class" onResize="change_size_ADVPage();">
+	<form action="newgui_adv_home.cgi" method="post" onsubmit="return false;">
+	<div id="scroll-pane" class="scroll-pane">
+		<table>
+			<tr>
+				<td>
+					<div class="advanced_section_details">
+						<div class="adv_box_field">
+                                                        <div id="box-header-table1" class="box-header-table-custom">
+							<table>
+							  <tr class="box-header">
+								<td class="icon-css">
+								  <div class="img_status_good custom_icon"></div>
+								</td>
+								<td class="box-header-text header-text1 curser_class"><%3889%></td>
+							  </tr>
+							</table>
+                                                        </div>
+                            <div class="table_height scroll-class">
+							<table class="adv_table_details_custom">
+								<tr align="left" valign="bottom"><td>
+									<table id="page-table1" class="page-table">
+										
+										<tr class="basic-text">
+											<td class="basic-text-menu" width="25%" ><%2156%></td>
+											<td class="basic-text-content" width="75%"> <%2746%> </td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3884%></td>
+											<td class="basic-text-content" > <%2747%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%2748%></td>
+											<td class="basic-text-content" > <%2749%></td>
+										</tr>
+                                        <%1540%>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-subTitle" ><%3890%></td>
+											<td class="basic-text-content" > </td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%812%> </td>
+											<td class="basic-text-content" > <%2756%> </td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%602%> </td>
+											<td class="basic-text-content" ><%363%> </td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3615%> </td>
+											<td class="basic-text-content" ><%3891%> </td>
+										</tr>
+                                        <%1553%>
+										<!--
+										<tr class="basic-text">
+											<td class="basic-text-menu" >Last Checked for Upgrade</td>
+											<td class="basic-text-content" >3/31/2010 14:55</td>
+										</tr>
+										-->  
+                                        <%1554%>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3892%></td>
+											<td class="basic-text-content" ><%3893%></td>
+										</tr>
+                                        <%1557%>
+										<tr >
+											<td class="basic-text-menu-bottom">&nbsp;</td>
+											<td class="basic-text-content-bottom"></td>
+										</tr>	                                        
+										<!--<tr class="basic-text" style="align:center">
+											<td colspan="2" class="basic-table-seperate-border" style="background-color:#FFFFFF;">
+											<table >
+											<tr>
+											<td width="25%"></td>
+											<td  width="50%" class="page-table-button-left" align="center" onClick="advButtonClick(2);" onMouseOver="changeCursorPointer();" onMouseOut="changeCursorDefault();">
+													 <span id="reboot"><%3894%></span>	
+											</td>
+											<td width="25%"></td>
+											</tr>
+											</table>
+											</td>
+										</tr>-->
+									</table>
+								</td></tr>
+							</table>
+                            </div>
+							<div class="btn_sty_1 btn_sty_2">
+                                <button name="reboot" id="reboot" class="button-common button-ADVANCE" onClick="advButtonClick(2);"><%3894%></button>
+                            </div>
+
+						</div>
+
+						<div class="adv_box_field">
+
+                                                        <div id="box-header-table2" class="box-header-table-custom">
+							<table>
+
+								<tr class="box-header">
+									<td class="width_20">
+										<%3895%>
+									</td>
+                                    <%1540%>
+									<td class="box-header-text header-text2 curser_class" id="INT_setup"><%3896%></td>
+                                    <%1553%>
+                                    <%1554%>
+                                    <td class="box-header-text header-text2" style="cursor:pointer;" id="LAN_setup"><%3890%></td>
+                                    <%1557%>
+								</tr>
+							</table>
+                                                        </div>
+
+                        <div class="table_height-1 table-overflow">
+							<table class="adv_table_details_custom">
+								<tr align="left" valign="bottom"><td>
+                                    <table id="page-table2" class="page-table">
+
+
+										<tr class="basic-text">
+											<td class="basic-text-menu" width="25%" ><%812%> </td>
+                                            <%1540%>
+											<td class="basic-text-content" width="75%"><%620%></td>
+                                            <%1553%>
+                                            <%1554%>
+											<td class="basic-text-content" width="75%"><%2756%></td>
+                                            <%1557%>
+										</tr>
+                                        <%1554%>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3615%> </td>
+											<td class="basic-text-content" ><%3891%> </td>
+										</tr>
+                                        <%1557%>            
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%602%> </td>
+                                            <%1540%>
+											<td class="basic-text-content" ><%1195%></td>
+                                            <%1553%>
+                                            <%1554%>       
+                                            <td class="basic-text-content" ><%1559%></td>
+                                            <%1557%>
+										</tr>
+                                        <%1540%>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3897%> </td>
+											<td class="basic-text-content" ><%3898%></td>
+										</tr>
+                                        <%1553%>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%603%> </td>
+                                            <%1540%>
+											<td class="basic-text-content" ><%3899%></td>
+                                            <%1553%>
+                                            <%1554%>  
+                                            <td class="basic-text-content" ><%1560%></td>
+                                            <%1557%>
+										</tr>
+                                        <%1554%>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%696%> </td>
+											<td class="basic-text-content" ><%1563%> </td>
+										</tr>    
+                                        <%1557%>                                           
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%2758%> </td>
+                                            <%1540%>
+											<td class="basic-text-content" ><%1568%></td>
+                                            <%1553%>
+                                            <%1554%>                                              
+											<td class="basic-text-content" ><%1569%><br><%1570%><br><%3900%></td>
+                                            <%1557%>
+										</tr>		
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border">
+                                                <div class="basic-table-seperate"></div>
+                                            </td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3901%> </td>
+											<td class="basic-text-content" ><%3902%> </td>
+										</tr>    
+		
+
+                                        <tr >
+											<td class="basic-text-menu-bottom">&nbsp;</td>
+											<td class="basic-text-content-bottom"></td>
+										</tr>	
+										<!--<tr class="basic-text" style="align:center;">
+											<td colspan="2" class="basic-table-seperate-border" style="background-color:#FFFFFF;">
+											<table ><tr>
+											 <td colspan="1" class="page-table-button-right" align="center"   onClick="advButtonClick(0);" onMouseOver="changeCursorPointer();" onMouseOut="changeCursorDefault();">
+												 <span id="statistics"><%1427%></span>									 
+											</td>
+											 <td colspan="1" class="page-table-button-right" align="center"  onClick="advButtonClick(1);" onMouseOver="changeCursorPointer();" onMouseOut="changeCursorDefault();">
+												 <span id="status" name="Status"><%934%></span>									 
+											</td>
+											</tr>
+											</table></td>
+										</tr>-->
+									</table>
+									<input type="hidden"></input>	
+								</td></tr>
+                            </table></div>
+                            <div class="action-zone">
+                                <button type="button" name="show_sta" id="statistics" onClick="advButtonClick(0);" class="border_btn page-table-button-large-right"><%1427%></button>
+                                <button type="button" name="Status" id="status" onClick="advButtonClick(1);" class="purple_button page-table-button-large-right"><%934%></button>
+                            </div>
+						</div>
+                        
+					</div> 
+				</td>
+			</tr>
+			<tr>
+				<td class="height_2"></td>
+			</tr>
+			<tr>
+				<td><div class="adv-home-table-seperate adv-home-table-seperate-custom"></div><div class="adv-home-table-seperate-2"></div></td>
+			</tr>
+			<tr>
+				<td class="height_2"></td>
+			</tr>
+			<tr>
+				<td>
+					<div class="advanced_section_details">
+
+						<div class="adv_box_field">
+
+                                                        <div id="box-header-table3" class="box-header-table box-header-table-custom">
+							<table>
+
+								<tr class="box-header">
+									<td class="icon-css">
+										<%3903%>
+									</td>
+									<td class="box-header-text header-text3 curser_class" id="wireless_setup"><%487%> (2.4GHz)</td>
+								</tr>
+							</table>
+                                                        </div>
+
+                        <div class="table_height_23 table-overflow">
+							<table class="adv_table_details_custom">
+								<tr align="left" valign="bottom"><td>
+									<table id="page-table3" class="page-table">
+
+
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%129%></td>
+											<td class="basic-text-content" > <%2750%>  </td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%80%></td>
+											<td class="basic-text-content" > <%3904%> </td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%131%></td>
+											<td class="basic-text-content" > <%3905%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%132%></td>
+											<td class="basic-text-content" > <%3906%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>										
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3907%></td>
+											<td class="basic-text-content" ><%3908%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3909%></td>
+											<td class="basic-text-content" ><%3910%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+                                                                       
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3911%></td>
+											<td class="basic-text-content" ><%3912%></td>
+										</tr>		
+                                        <tr >
+											<td class="basic-text-menu-bottom">&nbsp;</td>
+											<td class="basic-text-content-bottom"></td>
+										</tr>	                                        
+									</table>
+								</td></tr>
+							</table>
+                        </div>
+
+						</div> 
+
+						<div class="adv_box_field">
+
+
+                                                        <div id="box-header-table4" class="box-header-table box-header-table-custom">
+							<table>
+
+								<tr class="box-header">
+									<td class="icon-css">
+										<%3913%>
+									</td>
+									<td class="box-header-text  header-text4 curser_class" id="wireless_setup_5G"><%487%> (5GHz)</td>
+								</tr>
+							</table>
+                                                        </div>
+
+                        <div class="table_height_23 table-overflow">
+							<table class="adv_table_details_custom">
+								<tr align="left" valign="bottom"><td>
+									<table id="page-table4" class="page-table">
+
+        <%3914%>
+                                        <tr style="height:6px;background-color:#FFFFFF">
+                                            <td colspan="2" class="basic-table-seperate-border"></td>
+                                        </tr>
+
+                                        <tr class="basic-text">
+                                            <td class="basic-text-menu" >Smart Connect</td>
+                                            <td class="basic-text-content" ><%3915%></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="basic-table-seperate-border"></td>
+                                        </tr>
+                                        <tr class="basic-text">
+                                            <td class="basic-text-menu" ><%131%></td>
+                                            <td class="basic-text-content" ><%3916%></td>
+                                        </tr>
+                                        <tr>
+											<td colspan="2" class="basic-table-seperate-border"></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%132%></td>
+											<td class="basic-text-content" ><%3917%></td>
+										</tr>
+
+        <%3918%>
+        <%3919%>
+
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%129%></td>
+											<td class="basic-text-content" ><%2754%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%80%></td>
+											<td class="basic-text-content" ><%3920%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%131%></td>
+											<td class="basic-text-content" ><%3916%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%132%></td>
+											<td class="basic-text-content" ><%3917%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>										
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3907%></td>
+											<td class="basic-text-content" ><%3921%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3909%></td>
+											<td class="basic-text-content" ><%3922%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+                                                               
+										
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3911%></td>
+											<td class="basic-text-content" ><%3923%></td>
+										</tr>
+        <%3924%>
+                                        <tr >
+											<td class="basic-text-menu-bottom">&nbsp;</td>
+											<td class="basic-text-content-bottom"></td>
+										</tr>	                                        
+									</table>
+								</td></tr>
+							</table>
+                        </div>
+						</div>
+
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="height_2"></td>
+			</tr>
+			<tr>
+				<td><div class="adv-home-table-seperate adv-home-table-seperate-custom"></div><div class="adv-home-table-seperate-2"></div></td>
+			</tr>
+			<tr>
+				<td class="height_2"></td>
+			</tr>
+			<tr>
+				<td>
+					<div class="advanced_section_details">
+
+						<div class="adv_box_field">
+
+                                                        <div id="box-header-table5" class="box-header-table advanced_section_details box-header-table-custom">
+							<table>
+
+								<tr class="box-header">
+									<td class="icon-css">
+										<%3925%>
+									</td>
+									<td class="box-header-text  header-text5 curser_class" id="guest_setup"><%426%> (2.4 GHz)</td>
+								</tr>
+							</table>
+                                                        </div>
+
+                        <div class="table_height_23 scroll-class">
+							<table class="adv_table_details_custom">
+								<tr align="left" valign="bottom"><td>
+									<table id="page-table5" class="page-table">
+
+
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%129%></td>
+											<td class="basic-text-content" ><%3926%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3907%></td>
+											<td class="basic-text-content" ><%3927%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3909%></td>
+											<td class="basic-text-content" ><%3928%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+                                          
+                                                                                <tr class="basic-text">
+											<td class="basic-text-menu" ><%1973%></td>
+											<td class="basic-text-content" ><%3929%></td>
+										</tr>
+                                        <tr >
+											<td class="basic-text-menu-bottom">&nbsp;</td>
+											<td class="basic-text-content-bottom"></td>
+										</tr>	                                      
+									</table>
+								</td></tr>
+							</table>
+                        </div>
+
+						</div> 
+
+						<div class="adv_box_field">
+
+                                                        <div id="box-header-table6" class="box-header-table box-header-table-custom">
+							<table>
+
+								<tr class="box-header">
+									<td class="icon-css">
+										<%3930%>
+									</td>
+									<td class="box-header-text  header-text6 curser_class" id="guest_setup_5G"><%426%> (5 GHz)</td>
+								</tr>
+							</table>
+                                                        </div>
+
+                        <div class="table_height_23">
+							<table class="adv_table_details_custom">
+								<tr align="left" valign="bottom"><td>
+									<table id="page-table6" class="page-table">
+
+
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%129%></td>
+											<td class="basic-text-content" ><%3931%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3907%></td>
+											<td class="basic-text-content" ><%3932%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%3909%></td>
+											<td class="basic-text-content" ><%3933%></td>
+										</tr>
+										<tr>
+											<td colspan="2" class="basic-table-seperate-border"><div class="basic-table-seperate"></div></td>
+										</tr>
+                                                           
+										<tr class="basic-text">
+											<td class="basic-text-menu" ><%1973%></td>
+											<td class="basic-text-content" ><%3934%></td>
+										</tr>	
+										<tr>
+											<td class="basic-text-menu" >&nbsp;</td>
+											<td class="basic-text-content" ></td>
+										</tr>	
+									
+									</table>
+								</td></tr>
+							</table>
+						</div>
+						</div>
+
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="height_2"></td>
+			</tr>
+			<!--<tr>
+				<td><div class="adv-home-table-seperate"></div><div class="adv-home-table-seperate-2"></div></td>
+			</tr>-->
+			<tr>
+				<td class="height_2"></td>
+			</tr>
+
+		</table>
+		</div>
+		<input type="hidden" value="1" name="buttonSelect"/>
+<%432%>    
+    <input type="hidden" name="wantype" value="<%1247%>">
+<%435%>
+<%436%>
+        <input type="hidden" name="wantype" value="<%553%>">
+<%437%> 		
+		<input type="hidden" name="enable_apmode" value="<%527%>">
+	</form>  
+    <form>
+        <input type="hidden" name="curlang" value="<%9%>">  
+    </form>    
+</body>
+</html>
+
+
+

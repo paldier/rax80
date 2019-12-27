@@ -1,0 +1,12 @@
+# Package Information for pkg-config
+
+prefix=/disk6/han/works/AX6000/release/V1.0.1.40_1.0.22/targets/AX6000/fs.install
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libpcrecpp
+Description: PCRECPP - C++ wrapper for PCRE
+Version: 8.37
+Libs: -L${libdir} -lpcre -lpcrecpp
+Cflags: -I${includedir} 

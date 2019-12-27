@@ -1,0 +1,11 @@
+prefix=/projects/wlan_sw_ae3/blakekuan/bcm963xx_502HND05rc05_KUDU_REL_17_10_25_11_hnd_full_src_gpl/bcm963xx/bcmdrivers/broadcom/net/wl/impl51/main/components/opensource/jsonc/installbin
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: json-c
+Description: JSON implementation in C
+Version: 0.11
+Requires: 
+Libs:  -L${libdir} -ljson-c
+Cflags: -I${includedir}/json-c

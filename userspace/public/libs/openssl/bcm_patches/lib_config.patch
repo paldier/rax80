@@ -1,0 +1,58 @@
+diff -ur openssl-1.1.0g/Configurations/10-main.conf openssl-1.1.0g.mod/Configurations/10-main.conf
+--- openssl-1.1.0g/Configurations/10-main.conf	2017-11-02 07:29:01.000000000 -0700
++++ openssl-1.1.0g.mod/Configurations/10-main.conf	2018-01-16 10:45:33.551222918 -0800
+@@ -699,6 +699,16 @@
+         inherit_from     => [ "linux-generic32", asm("armv4_asm") ],
+         perlasm_scheme   => "linux32",
+     },
++    "linux-bcmmips" => {
++        inherit_from     => [ "linux-generic32", asm("mips_asm") ],
++        cflags           => add("-D_REENTRANT -D_XOPEN_SOURCE=500 -D_BSD_SOURCE"),
++        perlasm_scheme   => "o32",
++    },
++    "linux-bcmarm" => {
++        inherit_from     => [ "linux-generic32", asm("armv4_asm") ],
++        cflags           => add("-D_REENTRANT"),
++        perlasm_scheme   => "linux32",
++    },
+     "linux-aarch64" => {
+         inherit_from     => [ "linux-generic64", asm("aarch64_asm") ],
+         perlasm_scheme   => "linux64",
+
+diff -ur openssl-1.1.0g/configdata.pm openssl-1.1.0g.mod/configdata.pm
+--- openssl-1.1.0g/configdata.pm	2017-11-02 07:29:06.000000000 -0700
++++ openssl-1.1.0g.mod/configdata.pm	2018-01-16 11:02:40.757111097 -0800
+@@ -25,7 +25,7 @@
+   conf_files => [ "Configurations/90-team.conf" ],
+   cross_compile_prefix => "",
+   defines => [ "NDEBUG", "OPENSSL_NO_DYNAMIC_ENGINE" ],
+-  dirs => [ "crypto", "ssl", "engines", "apps", "test", "util", "tools", "fuzz" ],
++  dirs => [ "crypto", "ssl", "engines", "apps", "tools" ],
+   dynamic_engines => "0",
+   engdirs => [  ],
+   ex_libs => "",
+
+diff -ur openssl-1.1.0g/Configure openssl-1.1.0g.mod/Configure
+--- openssl-1.1.0g/Configure	2017-11-02 07:29:01.000000000 -0700
++++ openssl-1.1.0g.mod/Configure	2018-01-17 14:54:51.230346186 -0800
+@@ -965,8 +965,6 @@
+ $target{ranlib} =  $ENV{'RANLIB'}  || $target{ranlib}  ||
+                    (which("$config{cross_compile_prefix}ranlib") ?
+                           "\$(CROSS_COMPILE)ranlib" : "true");
+-$target{ar} =      $ENV{'AR'}      || $target{ar}      || "ar";
+-$target{nm} =      $ENV{'NM'}      || $target{nm}      || "nm";
+ $target{rc} =
+     $ENV{'RC'}  || $ENV{'WINDRES'} || $target{rc}      || "windres";
+
+diff -ur openssl-1.1.0g/crypto/engine/eng_cryptodev.c openssl-1.1.0g.mod/crypto/engine/eng_cryptodev.c
+--- openssl-1.1.0g/crypto/engine/eng_cryptodev.c	2017-11-02 07:29:03.000000000 -0700
++++ openssl-1.1.0g.mod/crypto/engine/eng_cryptodev.c	2018-01-16 11:17:47.740890342 -0800
+@@ -54,7 +54,7 @@
+ 
+ #include <sys/types.h>
+ #ifdef HAVE_CRYPTODEV
+-# include <crypto/cryptodev.h>
++# include <cryptodev.h>
+ # include <sys/ioctl.h>
+ # include <errno.h>
+ # include <stdio.h>

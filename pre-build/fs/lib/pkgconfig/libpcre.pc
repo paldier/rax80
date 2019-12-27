@@ -1,0 +1,13 @@
+# Package Information for pkg-config
+
+prefix=/disk6/han/works/AX6000/release/V1.0.1.40_1.0.22/targets/AX6000/fs.install
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libpcre
+Description: PCRE - Perl compatible regular expressions C library with 8 bit character support
+Version: 8.37
+Libs: -L${libdir} -lpcre
+Libs.private:  
+Cflags: -I${includedir} 

@@ -1,0 +1,23 @@
+lib/libcrc32.o: lib/libcrc32.c \
+ /tools/oss/packages/x86_64-rhel6/gcc/4.5.4/lib/gcc/x86_64-unknown-linux-gnu/4.5.4/include/stdint.h \
+ /usr/include/stdint.h /usr/include/features.h /usr/include/sys/cdefs.h \
+ /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
+ /usr/include/gnu/stubs-64.h /usr/include/bits/wchar.h include/crc32.h
+
+/tools/oss/packages/x86_64-rhel6/gcc/4.5.4/lib/gcc/x86_64-unknown-linux-gnu/4.5.4/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-64.h:
+
+/usr/include/bits/wchar.h:
+
+include/crc32.h:
